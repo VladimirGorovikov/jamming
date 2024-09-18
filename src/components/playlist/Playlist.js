@@ -1,24 +1,21 @@
 import Track from "../track/Track";
 
-/* SearchResults - component for rendering a list of tracks */
-function SearchResults({trackList, addTrackToPlaylist}) {
-
-
+function Playlist({trackList, addTrackToPlaylist}) {
     if (trackList.length === 0) {
         return (
             <div>
-                <h2>Search Results</h2>
-                <p>No tracks found!</p>
+                <h2>Playlist</h2>
+                <p>No tracks in playlist!</p>
             </div>  
         );
     }
 
     return (
         <div>
-            <h2>Search Results</h2>
+            <h2>Playlist</h2>
             {trackList.map((trackObject) => <Track trackObject={trackObject} addTrackToPlaylist={addTrackToPlaylist} />)}
         </div>
     );
 }
 
-export default SearchResults;
+export default Playlist;
