@@ -1,7 +1,7 @@
 /* SearchButton - renders a button and handles the submit */
-function SearchButton({handleSubmit}) {
+function SearchButton({searchFunc}) {
     return (
-        <button onClick={handleSubmit}>Search</button>
+        <button onClick={searchFunc}>Search</button>
     )
 }
 

@@ -1,13 +1,16 @@
 import Track from "../track/Track";
 
-function TrackList({trackList, trackButton, addTrackToPlaylist}) {
+function TrackList({trackList, trackButton, buttonFunc}) {
     if (trackList.length === 0) {
         return (
             <p>No tracks!</p>
         )
     }
+
     return (
-        trackList.map((trackObject) => <Track trackObject={trackObject} trackButton={trackButton} addTrackToPlaylist={addTrackToPlaylist} />)
+        <ul>
+            {trackList.map((trackObject) => <Track trackObject={trackObject} trackButton={trackButton} buttonFunc={buttonFunc} />)}
+        </ul>
     );
 }
 

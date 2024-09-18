@@ -1,12 +1,11 @@
-import Track from "../track/Track";
 import TrackList from "../trackList/TrackList";
 
 /* SearchResults - component for rendering a list of tracks */
-function SearchResults({trackList, addTrackToPlaylist}) {
+function SearchResults({trackList, buttonFunc}) {
         return (
             <div>
                 <h2>Search Results</h2>
-                <TrackList trackList={trackList} trackButton='+' addTrackToPlaylist={addTrackToPlaylist}/>
+                <TrackList trackList={trackList} trackButton='+' buttonFunc={buttonFunc}/>
             </div>
         )
 }

@@ -1,12 +1,9 @@
 /* Track - component for rendering a single track */
-function Track({trackObject, trackButton, addTrackToPlaylist}) {
+function Track({trackObject, trackButton, buttonFunc}) {
     return (
-        <div className="track">
-            <p>Name: {trackObject.name}</p>
-            <p>Artist: {trackObject.artist}</p>
-            <p>Album: {trackObject.album}</p>
-            <button onClick={() => addTrackToPlaylist(trackObject)}>{trackButton}</button>
-        </div>
+        <li key={trackObject.id}>Name: {trackObject.name} Artist: {trackObject.artist} Album: {trackObject.album}
+            <button onClick={() => buttonFunc(trackObject)}>{trackButton}</button>
+        </li>
     )
 }
 

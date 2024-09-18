@@ -10,12 +10,14 @@ const tracks = [
   {
     name: 'Sorry',
     artist: 'Justin Bieber',
-    album: 'IDK'
+    album: 'IDK',
+    id: 1
   },
   {
     name: 'Hello',
     artist: 'Adelle',
-    album: 'IDK'
+    album: 'IDK',
+    id: 2
   }
 ]
 
@@ -27,7 +29,7 @@ function App() {
   const [searchResults, setSearchResults] = useState([]);
   // Updates the search results when search button is pressed
   // Searches by name, artist or album name
-  const handleSearchSubmit = () => {
+  const updateSearchResults = () => {
     // Check if search term is empty
     if (searchTerm === '') {
       setSearchResults([]);
@@ -42,22 +44,26 @@ function App() {
   // Stores tracks added to playlist
   const [playlist, setPlaylist] = useState([]);
   // Adds a track to the playlist
-  const addTrackToPlaylist = (track) => {
-    setPlaylist([track, ...playlist]);
-    console.log(playlist);
+  const addTrackToPlaylist = (newTrack) => {
+    // Don't allow duplicate songs in playlist by checking if the song with id already exists
+    if (playlist.findIndex((track) => track.id === newTrack.id) !== -1) {
+      return;
+    }
+
+    setPlaylist((prev) => [newTrack, ...prev]);
   }
   // Removes a track from the playlist
-  const removeTrackFromPlaylist = () => {
-
+  const removeTrackFromPlaylist = (oldTrack) => {
+    setPlaylist((prev) => prev.filter((track) => track.id !== oldTrack.id));
   }
 
   return (
     <div className="App">
       <h1>Jamming Playlist Creator</h1>
       <SearchBar setSearchTerm={setSearchTerm} />
-      <SearchButton handleSubmit={handleSearchSubmit} />
-      <SearchResults trackList={searchResults} addTrackToPlaylist={addTrackToPlaylist} />
-      <Playlist trackList={playlist} />
+      <SearchButton searchFunc={updateSearchResults} />
+      <SearchResults trackList={searchResults} buttonFunc={addTrackToPlaylist} />
+      <Playlist trackList={playlist} buttonFunc={removeTrackFromPlaylist} />
     </div>
   );
 }
