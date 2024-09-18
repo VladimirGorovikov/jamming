@@ -1,21 +1,13 @@
 import Track from "../track/Track";
+import TrackList from "../trackList/TrackList";
 
 function Playlist({trackList, addTrackToPlaylist}) {
-    if (trackList.length === 0) {
-        return (
-            <div>
-                <h2>Playlist</h2>
-                <p>No tracks in playlist!</p>
-            </div>  
-        );
-    }
-
     return (
         <div>
             <h2>Playlist</h2>
-            {trackList.map((trackObject) => <Track trackObject={trackObject} addTrackToPlaylist={addTrackToPlaylist} />)}
+            <TrackList trackList={trackList} />
         </div>
-    );
+    )
 }
 
 export default Playlist;
