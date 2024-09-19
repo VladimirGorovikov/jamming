@@ -9,7 +9,7 @@ function TrackList({trackList, trackButton, buttonFunc}) {
 
     return (
         <ul>
-            {trackList.map((trackObject) => <Track trackObject={trackObject} trackButton={trackButton} buttonFunc={buttonFunc} />)}
+            {trackList.map((trackObject) => <Track key={trackObject.id} trackObject={trackObject} trackButton={trackButton} buttonFunc={buttonFunc} />)}
         </ul>
     );
 }
